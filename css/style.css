@@ -25,6 +25,11 @@ a {
 
 body {
   height: 100vh;
+  overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .wrap {
@@ -455,6 +460,10 @@ ul li:hover,
   content: "/ ";
   color: rgb(150, 67, 0);
   position: relative;
+}
+
+.d-flex {
+  display: flex !important;
 }
 
 .overlay {

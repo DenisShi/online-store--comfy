@@ -25,6 +25,11 @@ a {
 
 body {
    height: 100vh;
+   overflow: auto;
+}
+
+.overflow-hidden {
+   overflow: hidden;
 }
 
 ///////////////////////////
@@ -469,6 +474,10 @@ ul li:hover,
       padding-top: 60px;
       margin-bottom: 20px;
    }
+}
+
+.d-flex {
+   display: flex !important;
 }
 
 .overlay {

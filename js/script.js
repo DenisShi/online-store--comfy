@@ -113,8 +113,7 @@ async function getProducts(searchValue) {
     products.innerHTML = "";
     renderItems(filtered);
   } else {
-    // products.innerHTML = ""
-    products ? (products.innerHTML = "") : null; //
+    products ? (products.innerHTML = "") : null;
     renderItems(data.items);
   }
 
@@ -158,10 +157,12 @@ function renderItems(items) {
       item.addEventListener("click", (event) => {
         const id = event.target.id;
 
-        if (!arrayCarts.includes(items[id - 1])) {
-          addToCart(items, id);
-        } else {
+        let product = arrayCarts.find((item) => item.id == id);
+
+        if (arrayCarts.includes(product)) {
           removeFromCart(id);
+        } else {
+          addToCart(items, id);
         }
       });
     });
@@ -209,15 +210,15 @@ function renderItemClasses() {
 function openCart(e) {
   e.preventDefault();
   cart.classList.add("cart-active");
-  overlay.style.display = "flex";
-  body.style.overflow = "hidden";
+  overlay.classList.add("d-flex");
+  body.classList.add("overflow-hidden");
 }
 
 function closeCart(e) {
   e.preventDefault();
   cart.classList.remove("cart-active");
-  overlay.style.display = "none";
-  body.style.overflow = "auto";
+  overlay.classList.remove("d-flex");
+  body.classList.remove("overflow-hidden");
 }
 
 function addToCart(items, id) {
@@ -233,6 +234,7 @@ function removeFromCart(id) {
   let product = arrayCarts.find((item) => item.id === Number(id));
   let index = arrayCarts.indexOf(product);
   arrayCarts.splice(index, 1);
+
   renderItemCart();
   cartIconQuantity();
   cssClassRemove(id);
@@ -290,7 +292,7 @@ function totalCart() {
     const total = arrayCarts.map((item) => {
       return item.price * item.quantity;
     });
-    const totalPrice = total.reduce((acc, item) => acc + item);
+    let totalPrice = total.reduce((acc, item) => acc + item);
     cartTotal.innerHTML = `Total: $${totalPrice.toFixed(2)}`;
   }
 }
@@ -299,6 +301,7 @@ function totalCart() {
 
 window.onload = function () {
   renderItemClasses();
+  totalCart();
 };
 
 function cssClassAdd(id) {
