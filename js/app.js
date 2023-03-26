@@ -1,7 +1,3 @@
-// import cart from "./cart.js";
-// import renderItems from "./renderItems.js";
-// import search from "./search.js";
-
 const navbar = document.querySelector(".navbar");
 const burgerBtn = document.querySelector(".burgerBtn-menu");
 const overlay = document.querySelector(".overlay");
